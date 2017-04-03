@@ -11,7 +11,6 @@ var distance, marker_speed, well_speed, marker_weight, well_weight, marker_time,
 var scene1_container, scene2_container, split;
 
 /** Arrays declarations */
-var dup_array1 = dup_array2 = dup_array3 = dup_array4 = dup_array5 = [];
 var diff_array1 = diff_array2 = diff_array3 = diff_array4 = diff_array5 = []; 
 var array1 = array2 = well_array = speed_array = selected_dna_array = [];
 var blue_rect_dup_array1 = blue_rect_dup_array2 = blue_rect_dup_array3 = blue_rect_dup_array4 = blue_rect_dup_array5 = blue_rect_dup_array6 = [];

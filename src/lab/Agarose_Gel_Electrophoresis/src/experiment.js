@@ -40,52 +40,52 @@ function markerExperiment(scope) {
 }
 /** Drop down list of well1 function */
 function changeWell1Fn(scope) {
-	diff_array1 = dup_array1 = [];
+	diff_array1 = [];
 	scene1_container.getChildByName("blue_rect2").visible = true; /** Blue_rect2 visible in scene1_container */
 	scene2_container.getChildByName("blue_rect_big2").alpha = 1; /** Blue_rect_big2 visible in scene2_container */
 	selectedenzyme = scope.well1Model; /** Initialise the value of each dropdown in well1 to a new variable selectedenzyme */
 	selected_well.push(2); /** Push the object of well2 */
-	fillcalcArray(selectedenzyme, dup_array1, diff_array1, scope,1);	
+	fillcalcArray(selectedenzyme, diff_array1, scope, 1);	
 	agarose_gel_stage.update();
 }
 /** Drop down list of well2 function */
 function changeWell2Fn(scope) {
-	diff_array2 =dup_array2= [];
+	diff_array2 = [];
 	scene1_container.getChildByName("blue_rect3").visible = true; /** Blue_rect3 visible in scene1_container */
 	scene2_container.getChildByName("blue_rect_big3").alpha = 1; /** Blue_rect_big3 visible in scene2_container */
 	selectedenzyme = scope.well2Model; /** Initialise the value of each dropdown in well2 to a new variable selectedenzyme */
 	selected_well.push(3); /** Push the object of well3 */
-	fillcalcArray(selectedenzyme, dup_array2, diff_array2, scope,2);	
+	fillcalcArray(selectedenzyme, diff_array2, scope, 2);	
 	agarose_gel_stage.update(); 
 }
 /** Drop down list of well3 function */
 function changeWell3Fn(scope) {
-	diff_array3 =dup_array3 =[];
+	diff_array3 = [];
 	scene1_container.getChildByName("blue_rect4").visible = true; /** Blue_rect4 visible in scene1_container */
 	scene2_container.getChildByName("blue_rect_big4").alpha = 1; /** Blue_rect_big4 visible in scene2_container */
 	selectedenzyme = scope.well3Model; /** Initialise the value of each dropdown in well3 to a new variable selectedenzyme */
 	selected_well.push(4); /** Push the object of well4 */
-	fillcalcArray(selectedenzyme, dup_array3, diff_array3, scope,3);
+	fillcalcArray(selectedenzyme, diff_array3, scope, 3);
 	agarose_gel_stage.update();
 }
 /** Drop down list of well4 function */
 function changeWell4Fn(scope) {
-	diff_array4 =dup_array4 = [];
+	diff_array4 = [];
 	scene1_container.getChildByName("blue_rect5").visible = true; /** Blue_rect5 visible in scene1_container */
 	scene2_container.getChildByName("blue_rect_big5").alpha = 1; /** Blue_rect_big5 visible in scene2_container */
 	selectedenzyme = scope.well4Model; /** Initialise the value of each dropdown in well4 to a new variable selectedenzyme */
 	selected_well.push(5); /** Push the object of well5 */
-	fillcalcArray(selectedenzyme, dup_array4, diff_array4, scope,4);	
+	fillcalcArray(selectedenzyme, diff_array4, scope, 4);	
 	agarose_gel_stage.update();
 }
 /** Drop down list of well5 function */
 function changeWell5Fn(scope) {
-	diff_array5 =dup_array5 = [];
+	diff_array5 = [];
 	scene1_container.getChildByName("blue_rect6").visible = true; /** Blue_rect6 visible in scene1_container */
 	scene2_container.getChildByName("blue_rect_big6").alpha = 1; /** Blue_rect_big6 visible in scene2_container */
 	selectedenzyme = scope.well5Model; /** Initialise the value of each dropdown in well5 to a new variable selectedenzyme */		
 	selected_well.push(6); /** Push the object of well6 */
-	fillcalcArray(selectedenzyme, dup_array5, diff_array5, scope,5);
+	fillcalcArray(selectedenzyme, diff_array5, scope, 5);
 	agarose_gel_stage.update();
 }
 /** Function for creating rectangles */
@@ -132,11 +132,11 @@ function createRect_dup(rect, x_val, y_val, container, well_name) {
 }
 /** Function to calculate the weight of marker */
 function movedownCalc() {
-    movedownweightCalc(dup_array1, diff_array1, 2);
-	movedownweightCalc(dup_array2, diff_array2, 3);
-	movedownweightCalc(dup_array3, diff_array3, 4);
-	movedownweightCalc(dup_array4, diff_array4, 5);	
-	movedownweightCalc(dup_array5, diff_array5, 6);	
+    movedownweightCalc(diff_array1, 2);
+	movedownweightCalc(diff_array2, 3);
+	movedownweightCalc(diff_array3, 4);
+	movedownweightCalc(diff_array4, 5);	
+	movedownweightCalc(diff_array5, 6);	
 	/** Calculated the marker_weight = marker*1000, where marker is the slider value of label variable, 1000 is constant value */
 	marker_weight = marker*1000;
 	/** Calculated the marker_time = TIME_WEIGHT1+(marker_weight-1)*distance, where TIME_WEIGHT1 is the constant value 0.03 */
@@ -151,7 +151,7 @@ function movedown_marker(marker_speed, blue_rect_big, marker_id) {
 	agarose_gel_stage.update();	
 }
 /** Function to calculate the weight of each well */
-function movedownweightCalc(Dup_array, diff_array, obj) {	
+function movedownweightCalc(diff_array, obj) {	
 	for ( var i=0; i<diff_array.length; i++ ) {		
 		well_weight = diff_array[i]; /** Corresponding weight of each dropdown is assigned to the  variable well_weight */ 		
 		/** Calculated the well_time=(TIME_WEIGHT1+(well_weight[i]*distance)), where TIME_WEIGHT1 is the constant value 0.03,
@@ -186,33 +186,13 @@ function duplicateMovement(dup_array, array, obj) {
 	}
 }
 /** Function to fillcalcArray */
-function fillcalcArray(selectedenzyme, dupliArr, diff_array, scope, well) {	
+function fillcalcArray(selectedenzyme, diff_array, scope, well) {	
 	split = selected_dna_array[3][selectedenzyme-1].split("~"); /** Corresponding weight of each dropdown is assigned to the  variable split */
 	/** Corresponding weight of each well is assigned to different diff_array */ 
 	for ( var i=0; i<split.length; i++ ) {
 		/** Duplicate rects creating */
-		switch ( well ) {
-			case 1:
-				diff_array1.push(split[i]);
-				createRect_dup("duplicate_rect1"+i, scene2_container.getChildByName("blue_rect_big2").x, 65, scene2_container,1);
-				break;
-			case 2:
-				diff_array2.push(split[i]);
-				createRect_dup("duplicate_rect2"+i, scene2_container.getChildByName("blue_rect_big3").x, 65, scene2_container,2); 
-				break;
-			case 3:
-				diff_array3.push(split[i]);
-				createRect_dup("duplicate_rect3"+i, scene2_container.getChildByName("blue_rect_big4").x, 65, scene2_container,3);
-				break;
-			case 4:
-				diff_array4.push(split[i]);
-				createRect_dup("duplicate_rect4"+i, scene2_container.getChildByName("blue_rect_big5").x, 65, scene2_container,4);
-				break;
-			case 5:
-				diff_array5.push(split[i]);
-				createRect_dup("duplicate_rect5"+i, scene2_container.getChildByName("blue_rect_big6").x, 65, scene2_container,5);
-				break;
-		}
+		diff_array.push(split[i]);
+		createRect_dup("duplicate_rect"+i, scene2_container.getChildByName("blue_rect_big"+(well+1)).x, 65, scene2_container, well);
 	}
 }
 
